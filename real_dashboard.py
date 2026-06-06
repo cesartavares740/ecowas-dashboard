@@ -139,7 +139,7 @@ exchange_long = exchange_long[
 # ---------------------------------------------------
 
 st.title(
-    "Currency Stability and Inflation Divergence Across Selected ECOWAS Economies (2015–2025)"
+    "Currency Stability and Inflation Divergence Across Selected ECOWAS Economies (2015–2024)"
 )
 
 st.markdown("""
