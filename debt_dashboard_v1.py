@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 
 # ---------------------------------------------------
 # PAGE CONFIG
@@ -268,19 +269,37 @@ ranking = ranking.sort_values(
 ranking = ranking.reset_index(drop=True)
 ranking.insert(
     0,
-    "Rank",
+    "2024 Rank",
     range(1, len(ranking) + 1)
 )
 ranking["External Debt (% of GNI)"] = ranking["External Debt (% of GNI)"].round(1)
 ranking["GDP Growth (%)"] = ranking["GDP Growth (%)"].round(1)
 ranking["Inflation (%)"] = ranking["Inflation (%)"].round(1)
 
-st.dataframe(
-    ranking,
-    hide_index=True,
-    width="stretch"
+
+fig_table = go.Figure(data=[go.Table(
+    header=dict(
+        values=list(ranking.columns),
+        fill_color="#1f4e79",
+        font=dict(color="white", size=20),
+        align="center"
+    ),
+    cells=dict(
+        values=[ranking[col] for col in ranking.columns],
+        fill_color="#111111",
+        font=dict(color="white", size=18),
+        align="center",
+        height=38
+    )
+)])
+
+fig_table.update_layout(
+    width=1200,
+    height=350,
+    margin=dict(l=20, r=20, t=20, b=20)
 )
 
+st.plotly_chart(fig_table, use_container_width=True)
 
 # INSIGHTS
 st.header("Key Economic Insights")
