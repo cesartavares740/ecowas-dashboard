@@ -172,7 +172,8 @@ fig_debt = px.line(
 )
 
 fig_debt.update_layout(
-    height=600
+    height=600,
+    margin=dict(l=40, r=20, t=40, b=40)
 )
 
 st.plotly_chart(
@@ -199,7 +200,8 @@ fig_gdp = px.line(
 )
 
 fig_gdp.update_layout(
-    height=600
+    height=600,
+    margin=dict(l=40, r=20, t=40, b=40)
 )
 
 st.plotly_chart(
@@ -281,13 +283,13 @@ fig_table = go.Figure(data=[go.Table(
     header=dict(
         values=list(ranking.columns),
         fill_color="#1f4e79",
-        font=dict(color="white", size=20),
+        font=dict(color="white", size=14),
         align="center"
     ),
     cells=dict(
         values=[ranking[col] for col in ranking.columns],
         fill_color="#111111",
-        font=dict(color="white", size=18),
+        font=dict(color="white", size=15),
         align="center",
         height=38
     )
@@ -295,7 +297,7 @@ fig_table = go.Figure(data=[go.Table(
 
 fig_table.update_layout(
     width=1200,
-    height=350,
+    height=420,
     margin=dict(l=20, r=20, t=20, b=20)
 )
 
@@ -319,8 +321,6 @@ st.markdown("""
 # ---------------------------------------------------
 # FOOTER
 # ---------------------------------------------------
-
-st.markdown("---")
 
 st.caption(
     "Source: World Bank Open Data | Author: Cesar Tavares"
